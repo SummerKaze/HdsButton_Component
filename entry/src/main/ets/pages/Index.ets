@@ -46,7 +46,8 @@ struct Index {
         .fontSize(16)
         .fontWeight(FontWeight.Bold)
       HdsMiniBarButton({
-        onButtonClick: () => {}
+        onButtonClick: () => {
+        }
       }) {
         Text('GO')
           .fontSize(18)
@@ -54,6 +55,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
       }
     }
+    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     .width('100%')
     .height('100%')
     .backgroundColor(Color.Gray)
