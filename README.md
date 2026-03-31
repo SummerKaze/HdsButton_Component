@@ -1,126 +1,79 @@
-# HdsButton_Component
+# HdsTabsMiniBar
 
-基于 HarmonyOS HdsTabs 的浮动迷你栏按钮三方库组件，提供沉浸光感材质效果，支持全方位自定义配置。
+`HdsTabsMiniBar` 是一个 HarmonyOS 示例工程，用于演示 `hds_button` 组件库的使用方式。  
+组件基于 `HdsTabs` + `barFloatingStyle` 实现浮动迷你栏按钮，支持沉浸光感材质与参数化定制。
 
-## 功能特性
+## 项目说明
 
-- 基于 HdsTabs + barFloatingStyle 的浮动按钮
-- 沉浸光感材质效果（Immersive / Adaptive）
-- 14 项可配置参数（尺寸/图标/材质/布局/事件）
-- 支持 `@BuilderParam` 完全自定义按钮内容
-- 兼容 `@ComponentV2` + `@Param` 状态管理
-- 向后兼容旧版 `hdsButton` 导出
+- `entry`：示例应用模块（HAP），用于演示组件接入与调用场景
+- `hds_button`：组件库模块（HAR），对外导出 `HdsMiniBarButton`
+- 组件支持尺寸、图标、材质、布局、事件、自定义内容槽位等 15 项可配置能力
+- 兼容导出 `hdsButton`（deprecated，仅保留历史兼容）
 
-## 快速开始
+## 快速体验（本仓库）
 
-### 基础用法
+本仓库中示例工程已在 `entry/oh-package.json5` 通过本地依赖引用组件：
 
-```typescript
-import { HdsMiniBarButton } from 'hds_button'
-
-HdsMiniBarButton({
-  onButtonClick: () => {
-    // 处理点击事件
-  }
-})
-```
-
-### 自定义图标
-
-```typescript
-HdsMiniBarButton({
-  iconResource: $r('sys.symbol.play_fill'),
-  iconColor: [Color.White],
-  onButtonClick: () => {
-    console.info('按钮被点击')
-  }
-})
-```
-
-### 自定义尺寸
-
-```typescript
-HdsMiniBarButton({
-  barWidth: 60,
-  barHeight: 60,
-  contentPadding: 10,
-  // containerSize 自动计算: 60 + 10*4 = 100
-})
-```
-
-### 自定义材质效果
-
-```typescript
-import { hdsMaterial } from '@kit.UIDesignKit'
-
-HdsMiniBarButton({
-  materialType: hdsMaterial.MaterialType.TRANSLUCENT,
-  materialLevel: hdsMaterial.MaterialLevel.LIGHT,
-  maskColor: '#20FFFFFF',
-  barBottomMargin: 12,
-})
-```
-
-### 完全自定义按钮内容
-
-```typescript
-HdsMiniBarButton({
-  onButtonClick: () => { /* ... */ }
-}) {
-  // 尾随闭包替换默认图标
-  Text('GO')
-    .fontSize(18)
-    .fontColor(Color.White)
-    .fontWeight(FontWeight.Bold)
+```json5
+"dependencies": {
+  "hds_button": "file:../hds_button"
 }
 ```
 
-## API 参考
+运行示例页面：
 
-| 参数 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| barWidth | number | 50 | 按钮宽度 |
-| barHeight | number | 50 | 按钮高度 |
-| contentPadding | number | 8 | 内边距（防止光效裁切） |
-| containerSize | SizeOptions | undefined | 容器大小（默认自动: barSize + padding*4） |
-| iconResource | Resource | $r('sys.symbol.plus') | 图标资源 |
-| iconSize | number | 27 | 图标大小 |
-| iconColor | ResourceColor[] | [Color.Gray] | 图标颜色数组 |
-| maskColor | ResourceColor | Color.Transparent | 渐变遮罩颜色 |
-| barBottomMargin | number | 8 | 按钮底部边距 |
-| materialType | hdsMaterial.MaterialType | IMMERSIVE | 材质类型 |
-| materialLevel | hdsMaterial.MaterialLevel | ADAPTIVE | 材质等级 |
-| barPosition | BarPosition | BarPosition.End | 栏位置 |
-| barOverlap | boolean | true | 栏是否重叠内容 |
-| onButtonClick | (() => void) | undefined | 点击回调 |
-| buttonContent | @BuilderParam | 默认图标 | 自定义按钮内容 |
+- 页面入口：`entry/src/main/ets/pages/Index.ets`
+- 演示场景：基础用法、自定义图标、自定义尺寸、自定义内容（尾随闭包）
+
+## 组件文档
+
+参数、安装、完整 API 与高级用法请查看：
+
+- [`hds_button/README.md`](hds_button/README.md)
 
 ## 项目结构
 
-```
+```text
 HdsTabsMiniBar/
-├── entry/                    # 示例应用（HAP）
+├── entry/                         # 示例应用（HAP）
 │   └── src/main/ets/pages/Index.ets
-├── hds_button/               # 三方库模块（HAR）
-│   ├── Index.ets             # 模块导出入口
-│   ├── README.md             # 组件库文档
-│   ├── CHANGELOG.md          # 变更日志
-│   ├── LICENSE               # Apache-2.0
+├── hds_button/                    # 组件库（HAR）
+│   ├── Index.ets                  # 对外导出入口
+│   ├── README.md                  # 组件文档
 │   └── src/main/ets/components/
-│       ├── HdsMiniBarButton.ets  # 核心组件
-│       └── hdsButton.ets         # 向后兼容封装
+│       ├── HdsMiniBarButton.ets   # 主组件
+│       └── hdsButton.ets          # 兼容别名（deprecated）
+├── img/                           # 文档图片资源目录
 └── build-profile.json5
 ```
 
+## 示例效果图
+
+### 基础用法
+
+![基础用法](img/基础用法.gif)
+
+### 自定义图标
+
+![自定义图标](img/自定义图片.gif)
+
+### 自定义尺寸
+
+![自定义尺寸](img/自定义尺寸.gif)
+
+### 自定义内容
+
+![自定义内容](img/自定义内容.gif)
+
 ## 系统要求
 
-- HarmonyOS SDK: 6.1.0(23) 及以上
-- DevEco Studio: 5.0 及以上
+- HarmonyOS SDK：`6.1.0(23)` 及以上
+- DevEco Studio：`5.0` 及以上
 
-## 仓库
+## 仓库地址
 
-- GitHub: https://github.com/SummerKaze/HdsButton_Component
-- GitCode: https://gitcode.com/SummerKaze/HdsButton_Component
+- [GitHub](https://github.com/SummerKaze/HdsButton_Component)
+- [GitCode](https://gitcode.com/SummerKaze/HdsButton_Component)
 
 ## 许可证
 
