@@ -26,7 +26,7 @@ struct Index {
         iconColor: [Color.White],
         onButtonClick: () => {
           this.getUIContext().getPromptAction().showToast({
-            message: '点击了设置按钮'
+            message: '点击了自定义的播放按钮'
           })
         }
       })
