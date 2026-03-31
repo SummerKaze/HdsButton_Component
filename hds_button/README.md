@@ -41,7 +41,7 @@ HdsMiniBarButton({
 
 **演示效果**
 
-![基础用法](../img/基础用法.gif)
+![基础用法](/src/main/resources/base/media/usage.gif)
 
 ### 2) 自定义图标（图片）
 
@@ -59,7 +59,7 @@ HdsMiniBarButton({
 
 **演示效果**
 
-![自定义图标](../img/自定义图片.gif)
+![自定义图标](/src/main/resources/base/media/custom_icon)
 
 ### 3) 自定义尺寸
 
@@ -75,7 +75,7 @@ HdsMiniBarButton({
 
 **演示效果**
 
-![自定义尺寸](../img/自定义尺寸.gif)
+![自定义尺寸](/src/main/resources/base/media/custom_size)
 
 ### 4) 自定义内容（@BuilderParam）
 
@@ -94,7 +94,7 @@ HdsMiniBarButton({
 
 **演示效果**
 
-![自定义内容](../img/自定义内容.gif)
+![自定义内容](/src/main/resources/base/media/custom_content)
 
 ### 5) 自定义材质
 
