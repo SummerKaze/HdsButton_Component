@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-04-01
+
+### Changed
+
+- 文档：重构根目录 `README.md `，添加 「代码示例 + 对应 GIF 演示」对照排版，提升阅读体验
+
+### Added
+
+- 文档：在 README 与示例说明中嵌入 `img/` 下动图（基础用法、自定义图标、自定义尺寸、自定义内容）
+
 ## [1.0.0] - 2026-03-31
 
 ### Added
